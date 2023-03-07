@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        Personas
+    </div>
+    <div class="card-body">        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of Personas; let icontrol=index" >
+                        <td scope="row">{{persona.id}}</td>
+                        <td scope="row">{{persona.Nombre}}</td>
+                        <td scope="row">{{persona.Telefono}}</td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>    
+</div>

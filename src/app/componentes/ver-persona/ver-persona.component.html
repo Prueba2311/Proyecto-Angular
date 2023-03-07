@@ -1,0 +1,31 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <label for="idInput">Ingrese el ID:</label>
+    <input type="text" id="idInput" formControlName="id"><br><br>
+    <button type="submit">Consultar</button>
+</form>      
+<div class="card">
+    <div class="card-header">
+        Usuario
+    </div>
+    <div class="card-body">        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">{{Personas1.IdDocumento}}</td>
+                        <td scope="row">{{Personas1.Nombre}}</td>
+                        <td scope="row">{{Personas1.Telefono}}</td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>    
+</div>

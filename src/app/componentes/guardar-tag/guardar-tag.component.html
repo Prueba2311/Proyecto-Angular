@@ -1,0 +1,39 @@
+  <div class="card w-100">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>      
+        <select [(ngModel)]="selectedValue" (change)="onSelectedValueChange()" class="form-select" aria-label="Default select example" >
+        <option value="">-- Seleccione un elemento --</option>
+        <option *ngFor="let number of Tags" value="{{number.id}}">{{ number.nombre}}</option>                                    
+      </select>      
+      <div class="row mt-3">
+      
+    </div>
+    </div>
+  </div>  
+  
+  <div class="card">
+    <div class="card-header">
+        Tags Association
+    </div>
+    <div class="card-body">        
+        <div class="table-responsive">
+            <table class="table table-primary" #myTable>
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">nivel 1</th>
+                        <th scope="col">nivel 2</th>
+                        <th scope="col">nivel 3</th>
+                        <th scope="col">nivel 4</th>
+                    </tr>
+                </thead>
+                <tbody>                                                                                  
+                </tbody>
+                <div class="row mt-3">
+                    <a href="#" class="btn btn-primary">Enviar</a>
+                  </div>
+            </table>
+        </div>
+        
+    </div>    
+</div>
