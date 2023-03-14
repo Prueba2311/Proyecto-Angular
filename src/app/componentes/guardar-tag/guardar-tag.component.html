@@ -1,22 +1,48 @@
-  <div class="card w-100">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>      
-        <select [(ngModel)]="selectedValue" (change)="onSelectedValueChange()" class="form-select" aria-label="Default select example" >
-        <option value="">-- Seleccione un elemento --</option>
-        <option *ngFor="let number of Tags" value="{{number.id}}">{{ number.nombre}}</option>                                    
-      </select>      
-      <div class="row mt-3">
-      
-    </div>
-    </div>
-  </div>  
-  
   <div class="card">
     <div class="card-header">
         Tags Association
     </div>
     <div class="card-body">        
-        <div class="table-responsive">
+      <form [formGroup]="formularioTag" (ngSubmit)="EnviarDatos()" >        
+          <legend>Agrega un tag!!!</legend>
+          <div class="mb-3">
+            <label for="CodIdTag" class="form-label">Digita un codigo:</label>
+            <input type="text" id="CodIdTag" class="form-control" placeholder="Codigo" formControlName="id">
+          </div>
+          <div class="mb-3">
+            <label for="Tag1" class="form-label">Tag 1:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="Tag1" [(ngModel)]="selectedOption1" (ngModelChange)="onSelectOption(selectedOption1)">              
+              <option value="">-- Seleccione un elemento --</option>
+              <option *ngFor="let number of Tags" value="{{number.id}}">{{ number.nombre}}</option>                                    
+            </select>      
+          </div>
+          <div class="mb-3">
+            <label for="Tag2" class="form-label">Tag 2:</label>
+            <select class="form-select" formControlName="Tag2" [(ngModel)]="selectedOption2" (ngModelChange)="onSelectOption1(selectedOption2)">
+              <option value= "">-- Seleccione un elemento -- </option>              
+                <!-- Crear dinámicamente las celdas de la tabla -->                    
+                <option *ngFor="let item of TagsFiltro" [value]="item[0]">{{ item[1] }}</option>
+            </select>      
+          </div>
+
+          <div class="mb-3">
+            <label for="Tag3" class="form-label">Tag 3:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="Tag3" [(ngModel)]="selectedOption3" (ngModelChange)="onSelectOption2(selectedOption3)">
+              <option value="">-- Seleccione un elemento --</option>
+              <option *ngFor="let item of TagsFiltro1" [value]="item[0]">{{ item[1] }}</option>
+            </select>      
+          </div>
+          <div class="mb-3">
+            <label for="Tag4" class="form-label">Tag 4:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="Tag4" [(ngModel)]="selectedOption4">
+              <option value="">-- Seleccione un elemento --</option>
+              <option *ngFor="let item of TagsFiltro2" [value]="item[0]">{{ item[1] }}</option>
+            </select>      
+          </div>          
+          <button type="submit" class="btn btn-primary">Crear Tag</button>        
+      </form>
+      
+        <div class="table-responsive mt-3">          
             <table class="table table-primary" #myTable>
                 <thead>
                     <tr>
@@ -27,13 +53,10 @@
                         <th scope="col">nivel 4</th>
                     </tr>
                 </thead>
-                <tbody>                                                                                  
-                </tbody>
-                <div class="row mt-3">
-                    <a href="#" class="btn btn-primary">Enviar</a>
-                  </div>
+                <tbody>  
+                  <td *ngFor="let number of Tags1">{{ number }}</td>                                                                                                    
+                </tbody>                
             </table>
-        </div>
-        
+        </div>        
     </div>    
 </div>

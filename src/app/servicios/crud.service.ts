@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from './Persona';
+import { tag } from './Tag';
 
 
 
@@ -9,41 +10,48 @@ import { Persona } from './Persona';
   providedIn: 'root'
 })
 export class CrudService {
-
-  API1: string = 'http://127.0.0.1:8000/users';
-  API2: string = 'http://127.0.0.1:8000/';
-
+  //Produccion
+  //API1: string = 'https://lozanodesarrollador.website';
+  //Pruebas
+  API1: string = 'http://127.0.0.1:8000';
+  
   constructor(private clientHttp:HttpClient) { }
     //BuscarRegistr (datosPersona:Persona):Observable<any>{
       //return this.clientHttp.get(this.API, datosPersona);
   //}
 
-  getDato(id: string) {
-    this.API1 = 'http://127.0.0.1:8000/userId';
-    return this.clientHttp.get(this.API1 + "/" + id);
+  getDato(id: string) {    
+    return this.clientHttp.get(this.API1 + "/userId/" + id);
   }
 
   getDataAll() {
-    return this.clientHttp.get(this.API1);
+    return this.clientHttp.get(this.API1 + "/users");
   }
 
 
   GetTag (id: string){
-    return this.clientHttp.get(this.API2 + "ViewTag/" + id);
+    return this.clientHttp.get(this.API1 + "/ViewTag/" + id);
   }
 
   GetTagAll (){
-    return this.clientHttp.get(this.API2 + "ViewRegisteAll");
+    return this.clientHttp.get(this.API1 + "/ViewRegisteAll");
   }
 
 
   GetTagSelectAll (){
-    return this.clientHttp.get(this.API2 + "ViewTagAll");
+    return this.clientHttp.get(this.API1 + "/ViewTagAll");
   }
 
-  CreateTag(){
-
+  GetTagSelectTag2 (id: string){
+    return this.clientHttp.get(this.API1 + "/ViewTagAs/" + id);
   }
 
+  GetTagInsertAll (id: string){
+    return this.clientHttp.get(this.API1 + "/ViewRegister/" + id);
+  }
+
+  CreateTag(DatosTag:tag):Observable<any>{
+    return this.clientHttp.post(this.API1 + "/CreateAssocition", DatosTag);
+  }
 
 }

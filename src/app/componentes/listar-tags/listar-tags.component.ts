@@ -10,21 +10,18 @@ import { throwError } from 'rxjs';
   styleUrls: ['./listar-tags.component.css']
 })
 export class ListarTagsComponent implements OnInit {
-  Tags: any;
+  Tags: any;         
 
-  constructor(private CrudService: CrudService) {
+constructor(private CrudService: CrudService) {
   }
 
   ngOnInit(): void {
     this.CrudService.GetTagAll().subscribe(respuesta => {
       this.Tags = respuesta;      
-      for (let i = 1; i < this.Tags.length; i++) {
-        this.Tags[i] = this.Tags[i].replace(",", "");        
-        this.CrudService.GetTag(this.Tags[i]).subscribe(respuesta1 =>{          
-        this.Tags[i] = respuesta1;         
-        console.log(this.Tags);
-        });        
-      }
-    });
+    });            
+  }
+  
+  getColumnNames(obj: any): string[] {
+    return Object.keys(obj[0]);
   }
 }

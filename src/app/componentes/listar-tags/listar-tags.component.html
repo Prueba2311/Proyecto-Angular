@@ -14,12 +14,15 @@
                         <th scope="col">nivel 4</th>
                     </tr>
                 </thead>
-                <tbody>                                        
-                      
-                      <td *ngFor="let number of Tags">{{ number }}</td>                    
+                <tbody>                                                                                  
+                    <tr *ngFor="let product of Tags">
+                        <!-- Crear dinámicamente las celdas de la tabla -->
+                        <td *ngFor="let column of getColumnNames(Tags)">
+                          {{ product[column] }}
+                        </td>
+                      </tr>
                 </tbody>
             </table>
-        </div>
-        
+        </div>        
     </div>    
 </div>
